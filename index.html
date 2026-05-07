@@ -43,7 +43,7 @@ header h1{
     text-shadow:0 0 20px #4d95d9;
 }
 
-/* TYPING ANIMATION */
+/* TYPING */
 .typing{
     font-size:22px;
     margin-top:15px;
@@ -88,12 +88,6 @@ header h1{
     font-size:26px;
     color:#00e5ff;
     text-shadow:0 0 10px #00e5ff;
-    animation:pulse 2s infinite;
-}
-
-@keyframes pulse{
-    0%,100%{transform:scale(1)}
-    50%{transform:scale(1.1)}
 }
 
 /* SECTIONS */
@@ -101,6 +95,54 @@ header h1{
     padding:80px 10%;
 }
 
+/* SCHEDULE */
+.schedule-box{
+    max-width:700px;
+    margin:auto;
+    padding:30px;
+    border-radius:20px;
+    background:linear-gradient(145deg,#111,#1a1a1a);
+    box-shadow:0 0 25px rgba(77,149,217,0.3);
+    animation:fadeIn 1.2s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px)}
+    to{opacity:1; transform:translateY(0)}
+}
+
+.schedule-title{
+    text-align:center;
+    font-size:45px;
+    margin-bottom:20px;
+}
+
+.note{
+    text-align:center;
+    color:#4d95d9;
+    margin-bottom:20px;
+}
+
+.day{
+    padding:12px;
+    margin:8px 0;
+    background:#0f0f0f;
+    border-left:4px solid #3776ab;
+    display:flex;
+    justify-content:space-between;
+    transition:0.3s;
+}
+
+.day:hover{
+    transform:translateX(8px);
+    background:#161616;
+}
+
+.day span{
+    color:#00c6ff;
+}
+
+/* MEMBERSHIP */
 .price-box{
     text-align:center;
     padding:50px;
@@ -111,14 +153,6 @@ header h1{
 .price{
     font-size:60px;
     color:#00c6ff;
-}
-
-/* DISCORD */
-.discord{
-    text-align:center;
-    font-size:22px;
-    color:#4d95d9;
-    margin-top:20px;
 }
 
 /* FOOTER */
@@ -136,7 +170,9 @@ footer{
 <header>
     <h1>Python Academy</h1>
 
-    <div class="typing">Learn Python. Build apps. Become a pro developer.</div>
+    <div class="typing">
+        Learn Python. Build apps.
+    </div>
 
     <button class="btn"
         onclick="document.getElementById('membership').scrollIntoView({behavior:'smooth'})">
@@ -144,39 +180,67 @@ footer{
     </button>
 
     <div class="counter">
-        👥 Active Students: <span id="students">0</span>
+        👥 Active Students: <span id="students">500</span>
     </div>
 </header>
+
+<section class="section">
+    <h1 class="schedule-title">Weekly Schedule 📅</h1>
+
+    <div class="schedule-box">
+        <p class="note">Every lesson is 30 mins.</p>
+
+        <div class="day">Monday: <span>14:00</span></div>
+        <div class="day">Tuesday: <span>13:30</span></div>
+        <div class="day">Wednesday: <span>16:00</span></div>
+        <div class="day">Thursday: <span>15:30</span></div>
+        <div class="day">Friday: <span>14:00</span></div>
+        <div class="day">Saturday: <span>any time</span></div>
+        <div class="day">Sunday: <span>any time</span></div>
+    </div>
+</section>
 
 <section class="section" id="membership">
     <div class="price-box">
         <h1>Membership</h1>
-
         <div class="price">30zł/month</div>
 
         <p style="margin-top:20px;">
             Contact me on Discord to arrange payment and access.
         </p>
 
-        <div class="discord">
+        <p style="color:#4d95d9;margin-top:10px;">
             @.extps
-        </div>
+        </p>
     </div>
 </section>
 
 <footer>
-    Python Academy © 2026
+    Pycharm © 2026
 </footer>
 
 <script>
-/* FAKE STUDENTS COUNTER */
-function updateStudents(){
-    let value = Math.floor(Math.random() * (5000 - 500 + 1)) + 500;
-    document.getElementById("students").innerText = value;
+/* SMOOTH FAKE COUNTER (1 by 1) */
+let current = 500;
+let target = getRandom();
+
+function getRandom(){
+    return Math.floor(Math.random() * (5000 - 500 + 1)) + 500;
 }
 
-updateStudents();
-setInterval(updateStudents, 3000);
+function updateCounter(){
+    if(current < target){
+        current++;
+    } else if(current > target){
+        current--;
+    } else {
+        target = getRandom();
+    }
+
+    document.getElementById("students").innerText = current;
+}
+
+setInterval(updateCounter, 50);
 </script>
 
 </body>
