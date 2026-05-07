@@ -220,27 +220,30 @@ footer{
 </footer>
 
 <script>
-/* SMOOTH FAKE COUNTER (1 by 1) */
-let current = 500;
-let target = getRandom();
+let current = Math.floor(Math.random() * (5000 - 500 + 1)) + 500;
 
-function getRandom(){
-    return Math.floor(Math.random() * (5000 - 500 + 1)) + 500;
+function setNewTarget(){
+    let target = Math.floor(Math.random() * (5000 - 500 + 1)) + 500;
+
+    let diff = target - current;
+    let step = diff > 0 ? 1 : -1;
+    let steps = Math.abs(diff);
+
+    let i = 0;
+
+    let interval = setInterval(() => {
+        current += step;
+        document.getElementById("students").innerText = current;
+
+        i++;
+        if(i >= steps){
+            clearInterval(interval);
+        }
+    }, 200);
 }
 
-function updateCounter(){
-    if(current < target){
-        current++;
-    } else if(current > target){
-        current--;
-    } else {
-        target = getRandom();
-    }
-
-    document.getElementById("students").innerText = current;
-}
-
-setInterval(updateCounter, 50);
+setNewTarget();
+setInterval(setNewTarget, 5000);
 </script>
 
 </body>
