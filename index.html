@@ -310,8 +310,44 @@ footer{
     border-left:4px solid #ff00cc;
     background:linear-gradient(90deg,#120012,#0f0f0f);
 }
+
+.colorful{
+    background:linear-gradient(135deg,#ff00cc,#3333ff,#00ffcc,#ffcc00);
+    background-size:400% 400%;
+    animation:rainbow 6s ease infinite;
+    color:white;
+    text-shadow:0 0 10px rgba(0,0,0,0.5);
+}
+
+@keyframes rainbow{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+.contact{
+    margin-top:20px;
+    font-size:18px;
+    color:white;
+    animation:blink 2s infinite;
+}
+
+@keyframes blink{
+    0%,100%{opacity:1}
+    50%{opacity:0.6}
+}
+
+.discord-glow{
+    margin-top:15px;
+    font-size:22px;
+    color:#00e5ff;
+    text-shadow:0 0 10px #00e5ff,0 0 20px #00e5ff;
+    animation:pulse 2s infinite;
+}
 </style>
 
+
+ 
 <section class="section download">
     <h1>Download Python 🧠</h1>
     <p>Get official Python installer from the source:</p>
@@ -337,12 +373,21 @@ footer{
     </div>
 </section>
 
-<section class="section">
-    <div class="price-box">
-        <h1>Membership</h1>
+<section class="section" id="membership">
+    <div class="price-box colorful">
+
+        <h1>Membership 💎</h1>
+
         <div class="price">30zł/month</div>
 
-        <button class="btn">Pay & Join</button>
+        <p class="contact">
+            🚨 To join, contact me on Discord to arrange payment and access.
+        </p>
+
+        <div class="discord-glow">
+            @.extps
+        </div>
+
     </div>
 </section>
 
