@@ -292,20 +292,54 @@ footer{
 </section>
 
 <section class="section">
-    <div class="membership">
-        <h1>Membership 💎</h1>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:30px;max-width:1000px;margin:auto;">
 
-        <div class="price">50zł/month</div>
+        <div class="membership">
+            <h1>Normal Membership 💎</h1>
 
-        <p style="margin-top:20px;font-size:20px;">
-            Contact me on Discord to arrange payment and access.
-        </p>
+            <div class="price">50zł/month</div>
 
-        <a href="https://discord.com/users/1119316864686895175" target="_blank">
-            <button class="discord-btn">
-                Add me on Discord 💬
-            </button>
-        </a>
+            <p style="margin-top:20px;font-size:20px;">
+                Access to all standard Python lessons.
+            </p>
+
+            <ul style="margin-top:20px;line-height:2;text-align:left;max-width:250px;margin-inline:auto;">
+                <li>Python basics</li>
+                <li>Discord bots</li>
+                <li>Game development</li>
+                <li>Help on Discord</li>
+            </ul>
+
+            <a href="https://discord.com/users/YOUR_USER_ID" target="_blank">
+                <button class="discord-btn">
+                    Add me on Discord 💬
+                </button>
+            </a>
+        </div>
+
+        <div class="membership" style="background:linear-gradient(135deg,#00ffcc,#00c6ff,#5865F2,#ff00cc);">
+            <h1>+ Membership ⚡</h1>
+
+            <div class="price">90zł/month</div>
+
+            <p style="margin-top:20px;font-size:20px;">
+                Everything from normal membership + extra help.
+            </p>
+
+            <ul style="margin-top:20px;line-height:2;text-align:left;max-width:250px;margin-inline:auto;">
+                <li>Priority support</li>
+                <li>Custom coding help</li>
+                <li>Longer sessions</li>
+                <li>Extra projects</li>
+            </ul>
+
+            <a href="https://discord.com/users/1119316864686895175" target="_blank">
+                <button class="discord-btn">
+                    Contact for Membership 💬
+                </button>
+            </a>
+        </div>
+
     </div>
 </section>
 
@@ -332,17 +366,49 @@ function updateCounter(){
 setInterval(updateCounter, 5000);
 
 function registerDay(day, button){
+    let name = prompt('Enter your name:');
+
+    if(!name || name.trim() === ''){
+        return;
+    }
+
+    let customTime = '';
+
+    if(day.includes('Saturday') || day.includes('Sunday')){
+        customTime = prompt('Choose your lesson time (example: 18:30)');
+
+        if(!customTime || customTime.trim() === ''){
+            return;
+        }
+    }
+
     let registrations = JSON.parse(localStorage.getItem('registrations')) || [];
 
-    if(!registrations.includes(day)){
-        registrations.push(day);
-        localStorage.setItem('registrations', JSON.stringify(registrations));
+    let registrationText = name + ' - ' + day;
 
-        button.innerText = 'Registered';
-        button.classList.add('registered');
-
-        loadRegistrations();
+    if(customTime !== ''){
+        registrationText += ' at ' + customTime;
     }
+
+    registrations.push(registrationText);
+
+    localStorage.setItem('registrations', JSON.stringify(registrations));
+
+    button.innerText = 'Registered';
+    button.classList.add('registered');
+
+    function deleteRegistration(index){
+    let registrations = JSON.parse(localStorage.getItem('registrations')) || [];
+
+    registrations.splice(index,1);
+
+    localStorage.setItem('registrations', JSON.stringify(registrations));
+
+    loadRegistrations();
+}
+
+loadRegistrations();
+}
 }
 
 function loadRegistrations(){
@@ -351,10 +417,12 @@ function loadRegistrations(){
 
     container.innerHTML = '';
 
-    registrations.forEach(day => {
+    registrations.forEach((day,index) => {
         let div = document.createElement('div');
         div.className = 'saved-item';
-        div.innerText = '✅ ' + day;
+
+        div.innerHTML = `✅ ${day} <button onclick="deleteRegistration(${index})" style="margin-left:10px;padding:5px 10px;border:none;border-radius:8px;background:#ff004c;color:white;cursor:pointer;">Delete</button>`;
+
         container.appendChild(div);
     });
 }
