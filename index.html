@@ -40,22 +40,31 @@ header{
 
 header h1{
     font-size:80px;
-    animation:float 3s ease-in-out infinite;
     text-shadow:0 0 20px #4d95d9;
 }
 
-@keyframes float{
-    0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-20px)}
-}
-
-header p{
-    margin-top:20px;
+/* TYPING ANIMATION */
+.typing{
     font-size:22px;
+    margin-top:15px;
     color:#ccc;
+    border-right:2px solid #4d95d9;
+    white-space:nowrap;
+    overflow:hidden;
+    width:0;
+    animation:typing 4s steps(40,end) forwards, blink 0.7s infinite;
 }
 
-/* BUTTONS */
+@keyframes typing{
+    from{width:0}
+    to{width:340px}
+}
+
+@keyframes blink{
+    50%{border-color:transparent}
+}
+
+/* BUTTON */
 .btn{
     margin-top:25px;
     padding:14px 30px;
@@ -63,22 +72,28 @@ header p{
     border-radius:12px;
     font-size:18px;
     cursor:pointer;
-    transition:0.3s;
     color:white;
     background:linear-gradient(45deg,#3776ab,#4d95d9,#00c6ff);
-    background-size:200% 200%;
-    animation:shine 4s infinite;
-}
-
-@keyframes shine{
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+    transition:0.3s;
 }
 
 .btn:hover{
     transform:scale(1.1);
-    box-shadow:0 0 25px #4d95d9;
+    box-shadow:0 0 20px #4d95d9;
+}
+
+/* COUNTER */
+.counter{
+    margin-top:25px;
+    font-size:26px;
+    color:#00e5ff;
+    text-shadow:0 0 10px #00e5ff;
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.1)}
 }
 
 /* SECTIONS */
@@ -86,75 +101,16 @@ header p{
     padding:80px 10%;
 }
 
-h1{
-    margin-bottom:40px;
-}
-
-/* CARDS */
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-}
-
-.card{
-    background:linear-gradient(145deg,#1a1a1a,#111);
-    padding:25px;
-    border-radius:18px;
-    transition:0.4s;
-    position:relative;
-    overflow:hidden;
-}
-
-.card::before{
-    content:"";
-    position:absolute;
-    width:100%;
-    height:4px;
-    top:0;
-    left:0;
-    background:linear-gradient(90deg,#ff00cc,#3333ff,#00ffcc);
-}
-
-.card:hover{
-    transform:translateY(-12px) scale(1.02);
-    box-shadow:0 0 25px rgba(77,149,217,0.5);
-}
-
-/* SCHEDULE */
-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:20px;
-    overflow:hidden;
-    border-radius:12px;
-}
-
-th,td{
-    padding:15px;
+.price-box{
     text-align:center;
-    border:1px solid #222;
+    padding:50px;
+    background:linear-gradient(135deg,#111,#1b1b1b);
+    border-radius:25px;
 }
 
-th{
-    background:linear-gradient(45deg,#3776ab,#4d95d9);
-}
-
-tr{
-    background:#111;
-}
-
-tr:hover{
-    background:#1e1e1e;
-}
-
-/* DOWNLOAD BOX */
-.download{
-    text-align:center;
-    padding:40px;
-    background:linear-gradient(145deg,#111,#1a1a1a);
-    border-radius:20px;
-    box-shadow:0 0 20px rgba(0,0,0,0.6);
+.price{
+    font-size:60px;
+    color:#00c6ff;
 }
 
 /* DISCORD */
@@ -163,26 +119,6 @@ tr:hover{
     font-size:22px;
     color:#4d95d9;
     margin-top:20px;
-}
-
-/* PRICE */
-.price-box{
-    text-align:center;
-    padding:50px;
-    background:linear-gradient(135deg,#111,#1b1b1b);
-    border-radius:25px;
-    animation:pulse 3s infinite;
-}
-
-@keyframes pulse{
-    0%{transform:scale(1)}
-    50%{transform:scale(1.03)}
-    100%{transform:scale(1)}
-}
-
-.price{
-    font-size:60px;
-    color:#00c6ff;
 }
 
 /* FOOTER */
@@ -199,201 +135,49 @@ footer{
 
 <header>
     <h1>Python Academy</h1>
-    <p>Learn Python like a nerd</p>
 
-    <button class="btn" onclick="alert('Welcome to Python Academy 🚀')">
+    <div class="typing">Learn Python. Build apps. Become a pro developer.</div>
+
+    <button class="btn"
+        onclick="document.getElementById('membership').scrollIntoView({behavior:'smooth'})">
         Join Now
     </button>
+
+    <div class="counter">
+        👥 Active Students: <span id="students">0</span>
+    </div>
 </header>
 
-<section class="section">
-    <h1>What is Python?</h1>
-
-    <div class="card">
-        <h2>🐍 Python</h2>
-        <p>
-            Python is a super powerful programming language used for websites, AI, bots,
-            games and automation. It’s easy to read and perfect for beginners and pros.
-        </p>
-    </div>
-</section>
-
-<section class="section">
-    <h1 class="schedule-title">Weekly Schedule 📅</h1>
-
-    <div class="schedule-box">
-        <p class="note">Every lesson is 30 mins.</p>
-
-        <div class="schedule-list">
-
-            <div class="day">Monday: <span>14:00</span></div>
-            <div class="day">Tuesday: <span>13:30</span></div>
-            <div class="day">Wednesday: <span>16:00</span></div>
-            <div class="day">Thursday: <span>15:30</span></div>
-            <div class="day">Friday: <span>14:00</span></div>
-            <div class="day special">Saturday: <span>any time</span></div>
-            <div class="day special">Sunday: <span>any time</span></div>
-
-        </div>
-    </div>
-</section>
-
-<style>
-.schedule-title{
-    text-align:center;
-    font-size:45px;
-    margin-bottom:30px;
-    animation:pop 2s infinite;
-}
-
-@keyframes pop{
-    0%,100%{transform:scale(1)}
-    50%{transform:scale(1.05)}
-}
-
-.schedule-box{
-    max-width:700px;
-    margin:auto;
-    padding:30px;
-    border-radius:20px;
-    background:linear-gradient(145deg,#111,#1a1a1a);
-    box-shadow:0 0 25px rgba(77,149,217,0.3);
-    animation:fadeIn 1.5s ease-in-out;
-}
-
-@keyframes fadeIn{
-    from{opacity:0; transform:translateY(30px)}
-    to{opacity:1; transform:translateY(0)}
-}
-
-.note{
-    text-align:center;
-    color:#4d95d9;
-    margin-bottom:20px;
-    font-size:18px;
-    animation:glow 2s infinite;
-}
-
-@keyframes glow{
-    0%,100%{text-shadow:0 0 5px #4d95d9}
-    50%{text-shadow:0 0 20px #4d95d9}
-}
-
-.schedule-list{
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-}
-
-.day{
-    padding:15px;
-    border-radius:12px;
-    background:#0f0f0f;
-    display:flex;
-    justify-content:space-between;
-    transition:0.3s;
-    border-left:4px solid #3776ab;
-}
-
-.day:hover{
-    transform:translateX(10px);
-    background:#161616;
-    box-shadow:0 0 15px rgba(77,149,217,0.3);
-}
-
-.day span{
-    color:#00c6ff;
-    font-weight:bold;
-}
-
-.special{
-    border-left:4px solid #ff00cc;
-    background:linear-gradient(90deg,#120012,#0f0f0f);
-}
-
-.colorful{
-    background:linear-gradient(135deg,#ff00cc,#3333ff,#00ffcc,#ffcc00);
-    background-size:400% 400%;
-    animation:rainbow 6s ease infinite;
-    color:white;
-    text-shadow:0 0 10px rgba(0,0,0,0.5);
-}
-
-@keyframes rainbow{
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-}
-
-.contact{
-    margin-top:20px;
-    font-size:18px;
-    color:white;
-    animation:blink 2s infinite;
-}
-
-@keyframes blink{
-    0%,100%{opacity:1}
-    50%{opacity:0.6}
-}
-
-.discord-glow{
-    margin-top:15px;
-    font-size:22px;
-    color:#00e5ff;
-    text-shadow:0 0 10px #00e5ff,0 0 20px #00e5ff;
-    animation:pulse 2s infinite;
-}
-</style>
-
-
- 
-<section class="section download">
-    <h1>Download Python 🧠</h1>
-    <p>Get official Python installer from the source:</p>
-
-    <button class="btn" onclick="window.open('https://www.python.org/downloads/')">
-        Download Python
-    </button>
-</section>
-
-<section class="section">
-    <h1>Discord Contact 💬</h1>
-
-    <div class="card">
-        <p>Add me on Discord to join lessons:</p>
-
-        <div class="discord">
-            @.extps (! dekoś)
-        </div>
-
-        <p style="margin-top:20px;color:#aaa;">
-            I help with lessons and payment.
-        </p>
-    </div>
-</section>
-
 <section class="section" id="membership">
-    <div class="price-box colorful">
-
-        <h1>Membership 💎</h1>
+    <div class="price-box">
+        <h1>Membership</h1>
 
         <div class="price">30zł/month</div>
 
-        <p class="contact">
-            🚨 To join, contact me on Discord to arrange payment and access.
+        <p style="margin-top:20px;">
+            Contact me on Discord to arrange payment and access.
         </p>
 
-        <div class="discord-glow">
-            @.extps
+        <div class="discord">
+            YOUR_DISCORD_NICKNAME#0000
         </div>
-
     </div>
 </section>
 
 <footer>
     Python Academy © 2026
 </footer>
+
+<script>
+/* FAKE STUDENTS COUNTER */
+function updateStudents(){
+    let value = Math.floor(Math.random() * (5000 - 500 + 1)) + 500;
+    document.getElementById("students").innerText = value;
+}
+
+updateStudents();
+setInterval(updateStudents, 3000);
+</script>
 
 </body>
 </html>
