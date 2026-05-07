@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Python Academy</title>
 
 <style>
@@ -14,7 +14,7 @@
 }
 
 body{
-    background:#0f172a;
+    background:#0f0f0f;
     color:white;
     overflow-x:hidden;
 }
@@ -22,145 +22,143 @@ body{
 header{
     height:100vh;
     display:flex;
+    flex-direction:column;
     justify-content:center;
     align-items:center;
     text-align:center;
-    background:linear-gradient(135deg,#1e293b,#0f172a);
-    padding:20px;
+    background:linear-gradient(135deg,#111,#1d1d1d,#292929);
+    animation:bgMove 8s infinite alternate;
 }
 
-.hero{
-    max-width:800px;
+@keyframes bgMove{
+    0%{background-position:left;}
+    100%{background-position:right;}
 }
 
-.hero h1{
+header h1{
     font-size:70px;
-    margin-bottom:20px;
-    background:linear-gradient(90deg,#38bdf8,#818cf8);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+    animation:float 3s infinite ease-in-out;
 }
 
-.hero p{
-    font-size:20px;
-    color:#cbd5e1;
-    line-height:1.6;
-    margin-bottom:30px;
+header p{
+    margin-top:20px;
+    font-size:22px;
+    color:#bdbdbd;
 }
 
-.hero button{
+@keyframes float{
+    0%,100%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(-15px);
+    }
+}
+
+.btn{
+    margin-top:35px;
     padding:15px 35px;
+    background:#3776ab;
     border:none;
     border-radius:12px;
-    background:#3b82f6;
     color:white;
-    font-size:18px;
+    font-size:20px;
     cursor:pointer;
     transition:0.3s;
 }
 
-.hero button:hover{
-    transform:scale(1.05);
-    background:#2563eb;
+.btn:hover{
+    transform:scale(1.1);
+    background:#4d95d9;
+    box-shadow:0 0 25px #3776ab;
 }
 
-section{
+.section{
     padding:80px 10%;
 }
 
-.section-title{
-    font-size:40px;
-    margin-bottom:50px;
-    text-align:center;
-}
-
-.features{
+.cards{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:25px;
 }
 
 .card{
-    background:#1e293b;
+    background:#1b1b1b;
     padding:30px;
     border-radius:20px;
-    transition:0.3s;
-    border:1px solid rgba(255,255,255,0.08);
+    transition:0.4s;
+    position:relative;
+    overflow:hidden;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    width:120%;
+    height:5px;
+    background:#3776ab;
+    top:0;
+    left:-10%;
 }
 
 .card:hover{
     transform:translateY(-10px);
-    box-shadow:0 0 20px rgba(59,130,246,0.4);
+    box-shadow:0 0 20px rgba(55,118,171,0.7);
 }
 
-.card h3{
+.card h2{
     margin-bottom:15px;
-    color:#60a5fa;
 }
 
-.card p{
-    color:#cbd5e1;
-    line-height:1.6;
+.schedule{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:30px;
 }
 
-.practice{
-    background:#111827;
-    border-radius:25px;
-    padding:50px;
+.schedule th,
+.schedule td{
+    border:1px solid #333;
+    padding:15px;
     text-align:center;
 }
 
-.practice textarea{
-    width:100%;
-    height:220px;
-    margin-top:20px;
-    background:#0f172a;
-    border:none;
-    outline:none;
-    border-radius:15px;
-    padding:20px;
-    color:#38bdf8;
-    resize:none;
-    font-size:16px;
+.schedule th{
+    background:#3776ab;
 }
 
-.practice button{
-    margin-top:20px;
-    padding:15px 30px;
-    border:none;
-    border-radius:12px;
-    background:#8b5cf6;
-    color:white;
-    cursor:pointer;
-    font-size:16px;
-    transition:0.3s;
+.price-box{
+    margin-top:40px;
+    text-align:center;
+    background:#1a1a1a;
+    padding:50px;
+    border-radius:25px;
+    animation:pulse 2s infinite;
 }
 
-.practice button:hover{
-    background:#7c3aed;
+.price{
+    font-size:60px;
+    color:#4d95d9;
+}
+
+@keyframes pulse{
+    0%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.03);
+    }
+    100%{
+        transform:scale(1);
+    }
 }
 
 footer{
     text-align:center;
-    padding:40px;
-    background:#020617;
-    color:#94a3b8;
-}
-
-@media(max-width:768px){
-
-.hero h1{
-    font-size:45px;
-}
-
-.hero p{
-    font-size:18px;
-}
-
-.section-title{
-    font-size:32px;
-}
-
+    padding:30px;
+    background:#111;
+    color:#888;
 }
 </style>
 </head>
@@ -168,83 +166,81 @@ footer{
 <body>
 
 <header>
-    <div class="hero">
-        <h1>Python Academy</h1>
-        <p>
-            Learn Python with interactive lessons, coding challenges,
-            real-world projects, and live practice. Perfect for beginners
-            and advanced programmers who want to level up their coding skills.
-        </p>
-
-        <button>Start Learning</button>
-    </div>
+    <h1>Python Academy</h1>
+    <p>Learn Python from zero to pro 🚀</p>
+    <button class="btn">Join Now</button>
 </header>
 
-<section>
-    <h2 class="section-title">Why Choose Us?</h2>
+<section class="section">
+    <h1 style="margin-bottom:40px;font-size:45px;">What You Will Learn</h1>
 
-    <div class="features">
-
+    <div class="cards">
         <div class="card">
-            <h3>Interactive Lessons</h3>
-            <p>
-                Follow step-by-step tutorials designed to make Python
-                simple, engaging, and fun to learn.
-            </p>
+            <h2>Python Basics</h2>
+            <p>Variables, loops, functions and beginner projects.</p>
         </div>
 
         <div class="card">
-            <h3>Real-Time Practice</h3>
-            <p>
-                Write and test code directly in the browser with
-                beginner-friendly examples and exercises.
-            </p>
+            <h2>Game Development</h2>
+            <p>Create fun games using Python and cool libraries.</p>
         </div>
 
         <div class="card">
-            <h3>Coding Challenges</h3>
-            <p>
-                Improve problem-solving skills with challenges
-                ranging from easy to advanced difficulty.
-            </p>
+            <h2>Automation</h2>
+            <p>Make scripts that do boring tasks automatically.</p>
         </div>
 
         <div class="card">
-            <h3>Responsive Design</h3>
-            <p>
-                Learn on desktop, tablet, or mobile with a modern
-                fully responsive interface.
-            </p>
+            <h2>Discord Bots</h2>
+            <p>Build your own Discord bot like a coding wizard.</p>
         </div>
-
     </div>
 </section>
 
-<section>
+<section class="section">
+    <h1 style="margin-bottom:30px;font-size:45px;">Weekly Schedule</h1>
 
-    <div class="practice">
+    <table class="schedule">
+        <tr>
+            <th>Day</th>
+            <th>Topic</th>
+            <th>Time</th>
+        </tr>
 
-        <h2 class="section-title">Try Python Code</h2>
+        <tr>
+            <td>Monday</td>
+            <td>Python Basics</td>
+            <td>18:00</td>
+        </tr>
 
-        <p>
-            Practice coding in a clean and modern editor experience.
+        <tr>
+            <td>Wednesday</td>
+            <td>Projects & Practice</td>
+            <td>19:00</td>
+        </tr>
+
+        <tr>
+            <td>Friday</td>
+            <td>Discord Bots</td>
+            <td>18:30</td>
+        </tr>
+    </table>
+</section>
+
+<section class="section">
+    <div class="price-box">
+        <h1>Membership</h1>
+        <div class="price">30zł/month</div>
+        <p style="margin-top:15px;color:#bdbdbd;">
+            Full access to lessons, projects and support.
         </p>
 
-<textarea>
-print("Hello, World!")
-
-for i in range(5):
-    print("Python is awesome!")
-</textarea>
-
-        <button>Run Code</button>
-
+        <button class="btn">Start Learning</button>
     </div>
-
 </section>
 
 <footer>
-    © 2026 Python Academy • Learn Python The Modern Way
+    Python Academy © 2026
 </footer>
 
 </body>
