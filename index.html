@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Python Academy</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#0f172a;
+    color:white;
+    overflow-x:hidden;
+}
+
+header{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:linear-gradient(135deg,#1e293b,#0f172a);
+    padding:20px;
+}
+
+.hero{
+    max-width:800px;
+}
+
+.hero h1{
+    font-size:70px;
+    margin-bottom:20px;
+    background:linear-gradient(90deg,#38bdf8,#818cf8);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    font-size:20px;
+    color:#cbd5e1;
+    line-height:1.6;
+    margin-bottom:30px;
+}
+
+.hero button{
+    padding:15px 35px;
+    border:none;
+    border-radius:12px;
+    background:#3b82f6;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.hero button:hover{
+    transform:scale(1.05);
+    background:#2563eb;
+}
+
+section{
+    padding:80px 10%;
+}
+
+.section-title{
+    font-size:40px;
+    margin-bottom:50px;
+    text-align:center;
+}
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:#1e293b;
+    padding:30px;
+    border-radius:20px;
+    transition:0.3s;
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 20px rgba(59,130,246,0.4);
+}
+
+.card h3{
+    margin-bottom:15px;
+    color:#60a5fa;
+}
+
+.card p{
+    color:#cbd5e1;
+    line-height:1.6;
+}
+
+.practice{
+    background:#111827;
+    border-radius:25px;
+    padding:50px;
+    text-align:center;
+}
+
+.practice textarea{
+    width:100%;
+    height:220px;
+    margin-top:20px;
+    background:#0f172a;
+    border:none;
+    outline:none;
+    border-radius:15px;
+    padding:20px;
+    color:#38bdf8;
+    resize:none;
+    font-size:16px;
+}
+
+.practice button{
+    margin-top:20px;
+    padding:15px 30px;
+    border:none;
+    border-radius:12px;
+    background:#8b5cf6;
+    color:white;
+    cursor:pointer;
+    font-size:16px;
+    transition:0.3s;
+}
+
+.practice button:hover{
+    background:#7c3aed;
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    background:#020617;
+    color:#94a3b8;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+    font-size:45px;
+}
+
+.hero p{
+    font-size:18px;
+}
+
+.section-title{
+    font-size:32px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="hero">
+        <h1>Python Academy</h1>
+        <p>
+            Learn Python with interactive lessons, coding challenges,
+            real-world projects, and live practice. Perfect for beginners
+            and advanced programmers who want to level up their coding skills.
+        </p>
+
+        <button>Start Learning</button>
+    </div>
+</header>
+
+<section>
+    <h2 class="section-title">Why Choose Us?</h2>
+
+    <div class="features">
+
+        <div class="card">
+            <h3>Interactive Lessons</h3>
+            <p>
+                Follow step-by-step tutorials designed to make Python
+                simple, engaging, and fun to learn.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Real-Time Practice</h3>
+            <p>
+                Write and test code directly in the browser with
+                beginner-friendly examples and exercises.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Coding Challenges</h3>
+            <p>
+                Improve problem-solving skills with challenges
+                ranging from easy to advanced difficulty.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Responsive Design</h3>
+            <p>
+                Learn on desktop, tablet, or mobile with a modern
+                fully responsive interface.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section>
+
+    <div class="practice">
+
+        <h2 class="section-title">Try Python Code</h2>
+
+        <p>
+            Practice coding in a clean and modern editor experience.
+        </p>
+
+<textarea>
+print("Hello, World!")
+
+for i in range(5):
+    print("Python is awesome!")
+</textarea>
+
+        <button>Run Code</button>
+
+    </div>
+
+</section>
+
+<footer>
+    © 2026 Python Academy • Learn Python The Modern Way
+</footer>
+
+</body>
+</html>
