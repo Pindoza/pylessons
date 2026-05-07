@@ -14,11 +14,12 @@
 }
 
 body{
-    background:#0f0f0f;
+    background:radial-gradient(circle at top,#0f0f0f,#050505);
     color:white;
     overflow-x:hidden;
 }
 
+/* HEADER */
 header{
     height:100vh;
     display:flex;
@@ -26,67 +27,80 @@ header{
     justify-content:center;
     align-items:center;
     text-align:center;
-    background:linear-gradient(135deg,#111,#1d1d1d,#292929);
-    animation:bgMove 8s infinite alternate;
+    background:linear-gradient(-45deg,#111,#1a1a2e,#16213e,#0f3460);
+    background-size:400% 400%;
+    animation:bgMove 10s ease infinite;
 }
 
 @keyframes bgMove{
-    0%{background-position:left;}
-    100%{background-position:right;}
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
 }
 
 header h1{
-    font-size:70px;
-    animation:float 3s infinite ease-in-out;
+    font-size:80px;
+    animation:float 3s ease-in-out infinite;
+    text-shadow:0 0 20px #4d95d9;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-20px)}
 }
 
 header p{
     margin-top:20px;
     font-size:22px;
-    color:#bdbdbd;
+    color:#ccc;
 }
 
-@keyframes float{
-    0%,100%{
-        transform:translateY(0px);
-    }
-    50%{
-        transform:translateY(-15px);
-    }
-}
-
+/* BUTTONS */
 .btn{
-    margin-top:35px;
-    padding:15px 35px;
-    background:#3776ab;
+    margin-top:25px;
+    padding:14px 30px;
     border:none;
     border-radius:12px;
-    color:white;
-    font-size:20px;
+    font-size:18px;
     cursor:pointer;
     transition:0.3s;
+    color:white;
+    background:linear-gradient(45deg,#3776ab,#4d95d9,#00c6ff);
+    background-size:200% 200%;
+    animation:shine 4s infinite;
+}
+
+@keyframes shine{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
 }
 
 .btn:hover{
     transform:scale(1.1);
-    background:#4d95d9;
-    box-shadow:0 0 25px #3776ab;
+    box-shadow:0 0 25px #4d95d9;
 }
 
+/* SECTIONS */
 .section{
     padding:80px 10%;
 }
 
+h1{
+    margin-bottom:40px;
+}
+
+/* CARDS */
 .cards{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
+    gap:20px;
 }
 
 .card{
-    background:#1b1b1b;
-    padding:30px;
-    border-radius:20px;
+    background:linear-gradient(145deg,#1a1a1a,#111);
+    padding:25px;
+    border-radius:18px;
     transition:0.4s;
     position:relative;
     overflow:hidden;
@@ -95,70 +109,88 @@ header p{
 .card::before{
     content:"";
     position:absolute;
-    width:120%;
-    height:5px;
-    background:#3776ab;
+    width:100%;
+    height:4px;
     top:0;
-    left:-10%;
+    left:0;
+    background:linear-gradient(90deg,#ff00cc,#3333ff,#00ffcc);
 }
 
 .card:hover{
-    transform:translateY(-10px);
-    box-shadow:0 0 20px rgba(55,118,171,0.7);
+    transform:translateY(-12px) scale(1.02);
+    box-shadow:0 0 25px rgba(77,149,217,0.5);
 }
 
-.card h2{
-    margin-bottom:15px;
-}
-
-.schedule{
+/* SCHEDULE */
+table{
     width:100%;
     border-collapse:collapse;
-    margin-top:30px;
+    margin-top:20px;
+    overflow:hidden;
+    border-radius:12px;
 }
 
-.schedule th,
-.schedule td{
-    border:1px solid #333;
+th,td{
     padding:15px;
     text-align:center;
+    border:1px solid #222;
 }
 
-.schedule th{
-    background:#3776ab;
+th{
+    background:linear-gradient(45deg,#3776ab,#4d95d9);
 }
 
-.price-box{
-    margin-top:40px;
+tr{
+    background:#111;
+}
+
+tr:hover{
+    background:#1e1e1e;
+}
+
+/* DOWNLOAD BOX */
+.download{
     text-align:center;
-    background:#1a1a1a;
+    padding:40px;
+    background:linear-gradient(145deg,#111,#1a1a1a);
+    border-radius:20px;
+    box-shadow:0 0 20px rgba(0,0,0,0.6);
+}
+
+/* DISCORD */
+.discord{
+    text-align:center;
+    font-size:22px;
+    color:#4d95d9;
+    margin-top:20px;
+}
+
+/* PRICE */
+.price-box{
+    text-align:center;
     padding:50px;
+    background:linear-gradient(135deg,#111,#1b1b1b);
     border-radius:25px;
-    animation:pulse 2s infinite;
+    animation:pulse 3s infinite;
+}
+
+@keyframes pulse{
+    0%{transform:scale(1)}
+    50%{transform:scale(1.03)}
+    100%{transform:scale(1)}
 }
 
 .price{
     font-size:60px;
-    color:#4d95d9;
+    color:#00c6ff;
 }
 
-@keyframes pulse{
-    0%{
-        transform:scale(1);
-    }
-    50%{
-        transform:scale(1.03);
-    }
-    100%{
-        transform:scale(1);
-    }
-}
-
+/* FOOTER */
 footer{
     text-align:center;
-    padding:30px;
-    background:#111;
-    color:#888;
+    padding:25px;
+    background:#0a0a0a;
+    color:#777;
 }
 </style>
 </head>
@@ -167,75 +199,150 @@ footer{
 
 <header>
     <h1>Python Academy</h1>
-    <p>Learn Python from zero to pro 🚀</p>
-    <button class="btn">Join Now</button>
+    <p>Learn Python like a nerd</p>
+
+    <button class="btn" onclick="alert('Welcome to Python Academy 🚀')">
+        Join Now
+    </button>
 </header>
 
 <section class="section">
-    <h1 style="margin-bottom:40px;font-size:45px;">What You Will Learn</h1>
+    <h1>What is Python?</h1>
 
-    <div class="cards">
-        <div class="card">
-            <h2>Python Basics</h2>
-            <p>Variables, loops, functions and beginner projects.</p>
-        </div>
-
-        <div class="card">
-            <h2>Game Development</h2>
-            <p>Create fun games using Python and cool libraries.</p>
-        </div>
-
-        <div class="card">
-            <h2>Automation</h2>
-            <p>Make scripts that do boring tasks automatically.</p>
-        </div>
-
-        <div class="card">
-            <h2>Discord Bots</h2>
-            <p>Build your own Discord bot like a coding wizard.</p>
-        </div>
+    <div class="card">
+        <h2>🐍 Python</h2>
+        <p>
+            Python is a super powerful programming language used for websites, AI, bots,
+            games and automation. It’s easy to read and perfect for beginners and pros.
+        </p>
     </div>
 </section>
 
 <section class="section">
-    <h1 style="margin-bottom:30px;font-size:45px;">Weekly Schedule</h1>
+    <h1 class="schedule-title">Weekly Schedule 📅</h1>
 
-    <table class="schedule">
-        <tr>
-            <th>Day</th>
-            <th>Topic</th>
-            <th>Time</th>
-        </tr>
+    <div class="schedule-box">
+        <p class="note">Every lesson is 30 mins.</p>
 
-        <tr>
-            <td>Monday</td>
-            <td>Python Basics</td>
-            <td>18:00</td>
-        </tr>
+        <div class="schedule-list">
 
-        <tr>
-            <td>Wednesday</td>
-            <td>Projects & Practice</td>
-            <td>19:00</td>
-        </tr>
+            <div class="day">Monday: <span>14:00</span></div>
+            <div class="day">Tuesday: <span>13:30</span></div>
+            <div class="day">Wednesday: <span>16:00</span></div>
+            <div class="day">Thursday: <span>15:30</span></div>
+            <div class="day">Friday: <span>14:00</span></div>
+            <div class="day special">Saturday: <span>any time</span></div>
+            <div class="day special">Sunday: <span>any time</span></div>
 
-        <tr>
-            <td>Friday</td>
-            <td>Discord Bots</td>
-            <td>18:30</td>
-        </tr>
-    </table>
+        </div>
+    </div>
+</section>
+
+<style>
+.schedule-title{
+    text-align:center;
+    font-size:45px;
+    margin-bottom:30px;
+    animation:pop 2s infinite;
+}
+
+@keyframes pop{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.05)}
+}
+
+.schedule-box{
+    max-width:700px;
+    margin:auto;
+    padding:30px;
+    border-radius:20px;
+    background:linear-gradient(145deg,#111,#1a1a1a);
+    box-shadow:0 0 25px rgba(77,149,217,0.3);
+    animation:fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(30px)}
+    to{opacity:1; transform:translateY(0)}
+}
+
+.note{
+    text-align:center;
+    color:#4d95d9;
+    margin-bottom:20px;
+    font-size:18px;
+    animation:glow 2s infinite;
+}
+
+@keyframes glow{
+    0%,100%{text-shadow:0 0 5px #4d95d9}
+    50%{text-shadow:0 0 20px #4d95d9}
+}
+
+.schedule-list{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.day{
+    padding:15px;
+    border-radius:12px;
+    background:#0f0f0f;
+    display:flex;
+    justify-content:space-between;
+    transition:0.3s;
+    border-left:4px solid #3776ab;
+}
+
+.day:hover{
+    transform:translateX(10px);
+    background:#161616;
+    box-shadow:0 0 15px rgba(77,149,217,0.3);
+}
+
+.day span{
+    color:#00c6ff;
+    font-weight:bold;
+}
+
+.special{
+    border-left:4px solid #ff00cc;
+    background:linear-gradient(90deg,#120012,#0f0f0f);
+}
+</style>
+
+<section class="section download">
+    <h1>Download Python 🧠</h1>
+    <p>Get official Python installer from the source:</p>
+
+    <button class="btn" onclick="window.open('https://www.python.org/downloads/')">
+        Download Python
+    </button>
+</section>
+
+<section class="section">
+    <h1>Discord Contact 💬</h1>
+
+    <div class="card">
+        <p>Add me on Discord to join lessons:</p>
+
+        <div class="discord">
+            @.extps (! dekoś)
+        </div>
+
+        <p style="margin-top:20px;color:#aaa;">
+            I help with lessons and payment.
+        </p>
+    </div>
 </section>
 
 <section class="section">
     <div class="price-box">
         <h1>Membership</h1>
         <div class="price">30zł/month</div>
-        <p style="margin-top:15px;color:#bdbdbd;">
-            Full access to lessons, projects and support.
-        </p>
 
-        <button class="btn">Start Learning</button>
+        <button class="btn">Pay & Join</button>
     </div>
 </section>
 
