@@ -163,6 +163,11 @@ header h1{
 }
 
 .membership{
+    position:relative;
+    overflow:hidden;
+    transition:.4s;
+    animation:membershipGlow 6s ease infinite;
+
     max-width:700px;
     margin:auto;
     padding:50px;
@@ -216,6 +221,16 @@ header h1{
     color:#ddd;
 }
 
+@keyframes membershipGlow{
+    0%{transform:translateY(0px) scale(1);box-shadow:0 0 25px rgba(255,0,204,.25)}
+    50%{transform:translateY(-10px) scale(1.02);box-shadow:0 0 45px rgba(0,198,255,.4)}
+    100%{transform:translateY(0px) scale(1);box-shadow:0 0 25px rgba(255,0,204,.25)}
+}
+
+.membership:hover{
+    transform:scale(1.03);
+}
+
 footer{
     text-align:center;
     padding:30px;
@@ -251,37 +266,37 @@ footer{
 
         <div class="day">
             Monday: <span>14:00</span>
-            <button class="register-btn" onclick="registerDay('Monday 14:00', this)">Register</button>
+            <button type="button" class="register-btn" onclick="registerDay('Monday 14:00', this)">Register</button>
         </div>
 
         <div class="day">
             Tuesday: <span>13:30</span>
-            <button class="register-btn" onclick="registerDay('Tuesday 13:30', this)">Register</button>
+            <button type="button" class="register-btn" onclick="registerDay('Tuesday 13:30', this)">Register</button>
         </div>
 
         <div class="day">
             Wednesday: <span>16:00</span>
-            <button class="register-btn" onclick="registerDay('Wednesday 16:00', this)">Register</button>
+            <button type="button" class="register-btn" onclick="registerDay('Wednesday 16:00', this)">Register</button>
         </div>
 
         <div class="day">
             Thursday: <span>15:30</span>
-            <button class="register-btn" onclick="registerDay('Thursday 15:30', this)">Register</button>
+            <button type="button" class="register-btn" onclick="registerDay('Thursday 15:30', this)">Register</button>
         </div>
 
         <div class="day">
             Friday: <span>14:00</span>
-            <button class="register-btn" onclick="registerDay('Friday 14:00', this)">Register</button>
+            <button type="button" class="register-btn" onclick="registerDay('Friday 14:00', this)">Register</button>
         </div>
 
         <div class="day">
             Saturday: <span>any time</span>
-            <button class="register-btn" onclick="registerDay('Saturday any time', this)">Register</button>
+            <button type="button" class="register-btn" onclick="registerDay('Saturday any time', this)">Register</button>
         </div>
 
         <div class="day">
             Sunday: <span>any time</span>
-            <button class="register-btn" onclick="registerDay('Sunday any time', this)">Register</button>
+            <button type="button" class="register-btn" onclick="registerDay('Sunday any time', this)">Register</button>
         </div>
 
         <div class="saved-box">
@@ -312,7 +327,7 @@ footer{
 
             <a href="https://discord.com/users/YOUR_USER_ID" target="_blank">
                 <button class="discord-btn">
-                    Add me on Discord 💬
+                    Plan Membership
                 </button>
             </a>
         </div>
@@ -335,7 +350,7 @@ footer{
 
             <a href="https://discord.com/users/1119316864686895175" target="_blank">
                 <button class="discord-btn">
-                    Contact for Membership 💬
+                    Plan Membership +
                 </button>
             </a>
         </div>
